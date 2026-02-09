@@ -1,20 +1,27 @@
-n=int(input())
+
 k=int(input())
 arr = list(map(int,input().split()))
+n=len(arr)
+prefix = [0]*n
+prefix[0]=arr[0]
 
-prefix = [0]*(10**5+4)
+for i in range(1, n):
+    prefix[i]=prefix[i-1]+arr[i]
+    
 
-for i in arr:
-    prefix[i-k]+=1
-    prefix[i+k+1]-=1
-
-maxi = 0
-
-for i in range(1,10**5+4):
-    prefix[i]=prefix[i-1]+prefix[i]
-    maxi = max(prefix[i],maxi)
-
-print(maxi)
+mp={}
+count=0
+for i in range(n):
+    val = prefix[i]%k - i
+    
+    if val in mp:
+        count+=mp[val]
+    
+    if val in mp:
+        count+=mp[val]
+        
+            
+    
     
     
 
